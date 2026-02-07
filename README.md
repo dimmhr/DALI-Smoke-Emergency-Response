@@ -51,10 +51,10 @@ Organize files as follows:
 
 ```
 mas/
-│── roomSensor.pl
-│── safetyManager.pl
-│── guardTeam.pl
-│── evacuator.pl
+│── roomSensor.txt
+│── safetyManager.txt
+│── guardTeam.txt
+│── evacuator.txt
 ```
 
 ---
