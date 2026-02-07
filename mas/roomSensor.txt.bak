@@ -1,0 +1,23 @@
+:- dynamic smoke_received/2.
+
+threshold(8).
+new_smokeE(L, R) :>
+	write('SENSOR: smoke level = '), write(L),
+	write('in Room  '), write(R), nl,
+	assertz(smoke_received(L, R)),
+	fire_alarmE(L, R).
+
+
+fire_alarmE(L, R) :>
+    threshold(Th),
+    L >= Th,
+    write('ALARM: smoke level is above threshold'), nl.
+   
+
+
+trigger_Smanager(L, R) :>
+	assert(smoke_received(L, R)).
+	
+smoke_receivedI(L,R) :>
+   write('communicate with safetyManager.'),
+	messageA(safetyManager, send_message(alarm(L, R), Me)). 

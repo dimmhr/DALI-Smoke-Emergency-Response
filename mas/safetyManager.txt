@@ -1,0 +1,48 @@
+:- dynamic pending_alarm/2.
+:- dynamic busy/0.
+
+
+alarmE(L, R) :>
+    assertz(pending_alarm(L, R)).
+
+pending_alarmI(_L, _R) :>
+    busy,
+    write('SAFETY: busy, alarm queued'), nl.
+
+pending_alarmI(L, R) :>
+    \+ busy,
+    assertz(busy),
+    retract(pending_alarm(L, R)),
+    write('SAFETY: handling alarm for '), write(R), nl,
+
+    messageA(guardTeam,
+        send_message(dispatch_guard(R, L), Me)),
+
+    messageA(evacuator,
+        send_message(start_evacuation(R, L), Me)).
+
+
+
+guard_confirmE(R) :>
+    write('SAFETY: guard confirmed for '), write(R), nl.
+    
+
+firefighters_calledE(R) :>
+    write('SAFETY: firefighters called for room '), write(R), nl.
+
+room_clearedE(R) :>
+    write('SAFETY: room cleared for '), write(R), nl.
+room_safeE(R) :>
+    write('SAFETY: evacuation completed in '), write(R), nl,
+	retractall(busy),
+    trigger_next_dispatch.
+trigger_next_dispatch :>
+    pending_alarm(L2, R2),
+    retract(pending_alarm(L2, R2)),
+    assertz(pending_alarm(L2, R2)).
+
+trigger_next_dispatch :>
+    \+ pending_alarm(_, _),
+    write('SAFETY: no more alarms'), nl.
+
+

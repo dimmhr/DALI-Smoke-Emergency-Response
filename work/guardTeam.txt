@@ -1,0 +1,6 @@
+dispatch_guardE(R, L) :>
+    write('GUARD: going to room '), write(R),
+    write(' where smoke level= '), write(L), nl,
+
+    messageA(safetyManager,
+        send_message(guard_confirm(R), Me)).

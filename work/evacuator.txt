@@ -1,0 +1,15 @@
+:- dynamic evac_request/2.
+
+start_evacuationE(R, L) :>
+    write('EVACUATOR: received evacuation order for room '),
+    write(R), nl,
+    assert(evac_request(R, L)).
+
+evac_requestI(R, L) :>
+    retract(evac_request(R, L)),
+
+    write('EVACUATOR: evacuating room '), write(R), nl,
+    write('EVACUATOR: unlocking doors'), nl,
+    write('EVACUATOR: turning siren ON'), nl,
+	messageA(safetyManager,
+        send_message(room_safe(R), Me)).
