@@ -1,4 +1,4 @@
-#  Emergency Smoke Response MAS (DALI Prolog)
+#  Emergency Smoke Response MAS 
 
 ##  Installation and Execution Guide
 
@@ -11,7 +11,7 @@ This tutorial explains how to install and run the Emergency Smoke Response Multi
 Before running the project, make sure you have:
 
 - SICStus Prolog 4.x installed  
-- DALI Agent Framework version 2025-09 
+- DALI Agent Framework release 2025-09 
 - A terminal/command prompt  
 - Basic Prolog knowledge  
 
@@ -42,6 +42,8 @@ You should see the SICStus console.
 2. Extract the DALI folder.
 
 3. Place it in your working directory .
+
+4. edit startmas.bat with sictus path on ur pc
 
 ---
 
