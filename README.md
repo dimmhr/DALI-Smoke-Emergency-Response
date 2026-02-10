@@ -2,7 +2,7 @@
 
 ##  Installation and Execution Guide
 
-This tutorial explains how to install and run the Emergency Smoke Response Multi-Agent System developed in DALI Prolog .
+This tutorial explains how to install and run the Emergency Smoke Response Multi-Agent System developed in DALI .
 
 ---
 
@@ -13,7 +13,6 @@ Before running the project, make sure you have:
 - SICStus Prolog 4.x installed  
 - DALI Agent Framework release 2025-09 
 - A terminal/command prompt  
-- Basic Prolog knowledge  
 
 ---
 
@@ -87,15 +86,6 @@ send_message(new_smoke(10,coppitol), user).
 
 ---
 
-##  6. Stopping the System
-
-To stop an agent:
-
-```prolog
-halt.
-```
-
----
 
 ##  Reproducibility
 
